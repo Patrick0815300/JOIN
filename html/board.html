@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JOIN - Board</title>
+
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/fonts.css">
+        <link rel="stylesheet" href="../css/add_task.css">
+        <link rel="stylesheet" href="../css/board.css">
+
+        <script src="../script.js"></script>
+        <script src="../js/storage.js"></script>
+        <script src="../js/add_task.js"></script>
+        <script src="../js/add_task2.js"></script>
+        <script src="../assets/templates/addtask_template.js"></script>
+        <script src="../assets/templates/board_declaration.js"></script>
+        <script src="../js/board.js"></script>
+        <script src="../js/board2.js"></script>
+        <script src="../js/board_edit_task.js"></script>
+        <script src="../assets/templates/board_template.js"></script>
+
+        <link rel="icon" type="image/x-icon" href="../../assets/img/00_general-elements/join-logo-dark.svg">
+    </head>
+
+    <body onload="initBoard()" onclick="closeUserMenu()">
+
+        <div class="page-content">
+            <nav w3-include-html="../assets/templates/navbar.html"></nav>
+
+            <main class="main-content bg-color">
+                <header w3-include-html="../assets/templates/header.html"></header>
+
+                <!-- Section: Board Headline -->
+                <section class="bg-color ml-96 mt-110 m-rgt32">
+                    <div class="title-searchbar-container ai-ctr-space-btwn">
+                        <h1>Board</h1>
+                        <div class="searchbar-button-container df-ai-ctr">
+                            <div class="searchbar border-focus df-ai-ctr">
+                                <input onkeyup="showSearchedTasks()" id="search_field" class="searchbar-inputfield" type="search" size="10" placeholder="Find Task">
+                                <div class="separator"></div>
+                                <svg onclick="showSearchedTasks()" class="searchbar-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <mask id="mask0_75609_16019" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
+                                    <rect width="32" height="32" fill="#D9D9D9"/>
+                                    </mask>
+                                    <g mask="url(#mask0_75609_16019)">
+                                    <path d="M13.7118 20.2137C11.8946 20.2137 10.3567 19.5843 9.098 18.3256C7.83931 17.0669 7.20996 15.529 7.20996 13.7118C7.20996 11.8946 7.83931 10.3567 9.098 9.098C10.3567 7.83931 11.8946 7.20996 13.7118 7.20996C15.529 7.20996 17.0669 7.83931 18.3256 9.098C19.5843 10.3567 20.2137 11.8946 20.2137 13.7118C20.2137 14.4454 20.097 15.1372 19.8636 15.7874C19.6302 16.4376 19.3134 17.0127 18.9133 17.5129L24.5149 23.1145C24.6983 23.2979 24.79 23.5313 24.79 23.8147C24.79 24.0981 24.6983 24.3315 24.5149 24.5149C24.3315 24.6983 24.0981 24.79 23.8147 24.79C23.5313 24.79 23.2979 24.6983 23.1145 24.5149L17.5129 18.9133C17.0127 19.3134 16.4376 19.6302 15.7874 19.8636C15.1372 20.097 14.4454 20.2137 13.7118 20.2137ZM13.7118 18.2131C14.9622 18.2131 16.025 17.7755 16.9002 16.9002C17.7755 16.025 18.2131 14.9622 18.2131 13.7118C18.2131 12.4615 17.7755 11.3987 16.9002 10.5234C16.025 9.64815 14.9622 9.21053 13.7118 9.21053C12.4615 9.21053 11.3987 9.64815 10.5234 10.5234C9.64815 11.3987 9.21053 12.4615 9.21053 13.7118C9.21053 14.9622 9.64815 16.025 10.5234 16.9002C11.3987 17.7755 12.4615 18.2131 13.7118 18.2131Z" fill="#2A3647"/>
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="add-task-button df-ai-ctr" onclick="showAddTaskOverlay('ToDo')">
+                                <span class="fs21-fw700">Add task</span>
+                                <img src="../assets/img/00_general-elements/plus-white.svg" alt="">
+                            </div>
+                        </div>
+                        <svg onclick="addTaskMobile('ToDo')" class="addtask-mobile-button d-none" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="40" height="40" rx="10" fill="#2A3647"/>
+                            <path d="M20 10V30" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M30 20L10.0005 20.138" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </section>
+                
+                <!-- Section: Board distribution -->
+                <section class="board-distribution ml-96 m-rgt32 bg-color">
+                    <div class="board-columns-container">
+                        <!-- To Do -->
+                        <div class="board-column-container">
+                            <div class="column-title-container ai-ctr-space-btwn">
+                                <span class="column-title">To do</span>
+                                <div>
+                                    <svg onclick="showAddTaskOverlay('ToDo')" class="plus-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                        <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <svg onclick="addTaskMobile('ToDo')" class="plus-icon plus-icon-mobile" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                        <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                
+                            </div>
+                            <div id="to_do" class="column-tasks-container" ondragover="allowDrop(event); highlightColumn('to_do')" ondragleave="removeHighlight('to_do')" ondrop="moveTo('to_do')"></div>
+                        </div>
+
+                        <!-- In Progress -->
+                        <div class="board-column-container">
+                            <div class="column-title-container ai-ctr-space-btwn">
+                                <span class="column-title">In progress</span>
+                                <svg onclick="showAddTaskOverlay('InProgress')" class="plus-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <svg onclick="addTaskMobile('InProgress')" class="plus-icon plus-icon-mobile" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div id="in_progress" class="column-tasks-container" ondragover="allowDrop(event); highlightColumn('in_progress')" ondragleave="removeHighlight('in_progress')" ondrop="moveTo('in_progress')"></div>
+                        </div>
+
+                        <!-- Await Feedback -->
+                        <div class="board-column-container">
+                            <div class="column-title-container ai-ctr-space-btwn">
+                                <span class="column-title">Await feedback</span>
+                                <svg onclick="showAddTaskOverlay('AwaitFeedback')" class="plus-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                <svg onclick="addTaskMobile('AwaitFeedback')" class="plus-icon plus-icon-mobile" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="1" y="1" width="22" height="22" rx="7" stroke="#2A3647" stroke-width="2"/>
+                                    <path d="M12 8V16" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M16 12.0754L8 12.0754" stroke="#2A3647" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                            </div>
+                            <div id="await_feedback" class="column-tasks-container" ondragover="allowDrop(event); highlightColumn('await_feedback')" ondragleave="removeHighlight('await_feedback')" ondrop="moveTo('await_feedback')"></div>
+                        </div>
+
+                        <!-- Done -->
+                        <div class="board-column-container">
+                            <div class="column-title-container">
+                                <span class="column-title">Done</span>
+                            </div>
+                            <div id="done" class="column-tasks-container" ondragover="allowDrop(event); highlightColumn('done')" ondragleave="removeHighlight('done')" ondrop="moveTo('done')"></div>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <!-- Section: Big view -->
+                <section id="big_view_container" class="overlay-container d-none" onclick="closeBigView(0)"></section>
+
+                <!-- Section: Add Task Overlay -->
+                <section id="overlay_add_task" class="overlay-container d-none" onclick="closeAddTaskOverlay(), closeAssignMenu()">
+                    <div id="add_task_overlay_card" class="addtask-backlog transition" w3-include-html="../assets/templates/task_form.html" onclick="stopPropagation(event), closeAssignMenu()"></div>
+                </section>
+                <div id="animate_btn_overlay" class="overlay-task-added animate">
+                    <button id="animate_btn" class="prio-btn create-btn task-added">Task added to board <img src="../assets/img/00_general-elements/board-grey.svg"></button>
+                </div>
+            </main>
+        </div>
+
+    </body>
+</html>
