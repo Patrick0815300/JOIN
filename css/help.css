@@ -1,0 +1,38 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    margin-left: 96px;
+    margin-right: 16px;
+    overflow: auto;
+}
+
+.legal-notice {
+    gap: 24px;
+}
+
+.subtitle {
+    margin-bottom: 24px;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.title-help {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 110px;
+    margin-bottom: 48px;
+}
+
+.d-none {
+    display: none;
+}
+
+@media screen and (max-width: 920px) {
+    .content {
+        margin-left: 21px;
+    }
+}

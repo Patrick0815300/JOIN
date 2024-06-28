@@ -1,0 +1,56 @@
+body {
+    height: 100%;
+}
+
+.d-none {
+    display: none;
+}
+
+.center-pp {
+    width: 193px !important;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.content {
+    margin-left: 96px;
+    margin-right: 16px;
+    position: relative;
+    overflow: auto;
+}
+
+.privacy-police {
+    gap: 24px;
+}
+
+.subtitle {
+    margin-bottom: 24px;
+}
+
+svg {
+    padding: 2.5px 0px 0px 0px;
+}
+
+svg:hover {
+    cursor: pointer;
+}
+
+.title-privat {
+    gap: 30px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 48px;
+    margin-top: 110px;
+}
+
+.nav-privacy-policy {
+    background-color: #091931;
+}
+
+@media screen and (max-width: 920px) {
+    .content {
+        margin-left: 21px;
+    }
+}

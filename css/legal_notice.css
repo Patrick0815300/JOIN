@@ -1,0 +1,46 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+.center-pp {
+    width: 193px !important;
+}
+
+.d-none {
+    display: none;
+}
+
+.content {
+    margin-left: 96px;
+    margin-right: 16px;
+    overflow: auto;
+}
+
+.subtitle {
+    margin-bottom: 24px;
+}
+
+svg {
+    padding: 2.5px 0px 0px 0px;
+}
+
+svg:hover {
+    cursor: pointer;
+}
+
+.title-legal {
+    margin-top: 110px;
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav-legal-notice {
+    background-color: #091931;
+}
+
+@media screen and (max-width: 920px){
+    .content {
+        margin-left: 21px;
+    }
+}

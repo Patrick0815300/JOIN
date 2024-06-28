@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOIN - Log in</title>
+
+    <link rel="icon" type="image/x-icon" href="./assets/img/00_general-elements/join-logo-dark.svg">
+    <link rel="stylesheet" href="./css/fonts.css">
+    <link rel="stylesheet" href="./css/index.css">
+
+    <script src="./script.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/register.js"></script>
+    <script src="./js/login.js" defer></script>
+    <!-- Diese Datei darf erst geladen werden, wenn das HTML komplett geladen ist! Daher das Attribut "defer" -->
+
+</head>
+
+<body id="body" onload="init(); initRegister()">
+    <div class="page-content" id="logo-container">
+        <svg id="logo" class="logo" width="274" height="335" viewBox="0 0 274 335" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path d="M196.314 0H135.623V69.8251H196.314V0Z" fill="#2A3647" />
+            <path
+                d="M135.623 126.614H196.315V225.091C196.592 248.787 189.848 272.031 176.94 291.868C164.195 311.141 139.591 334.072 94.0723 334.072C44.4917 334.072 15.5931 310.626 0 297.777L38.2825 250.554C53.5021 262.981 68.1615 273.204 94.3057 273.204C114.101 273.204 121.99 265.138 126.612 258.104C132.896 248.334 136.146 236.908 135.95 225.279L135.623 126.614Z"
+                fill="#2A3647" />
+            <path d="M104.67 82.5332H43.9781V143.495H104.67V82.5332Z" fill="#29ABE2" />
+            <path
+                d="M228.108 305.467C228.108 318.456 221.525 325.444 212.328 325.444C203.131 325.444 197.108 317.143 197.108 306.123C197.108 295.103 203.318 286.381 212.842 286.381C222.366 286.381 228.108 294.962 228.108 305.467ZM204.158 305.983C204.158 313.814 207.286 319.582 212.655 319.582C218.024 319.582 221.058 313.486 221.058 305.514C221.058 298.526 218.257 291.961 212.655 291.961C207.053 291.961 204.158 298.292 204.158 305.983Z"
+                fill="#2A3647" />
+            <path d="M240.153 286.944V324.834H233.43V286.944H240.153Z" fill="#2A3647" />
+            <path
+                d="M247.436 324.834V286.944H254.905L262.935 302.56C265.002 306.643 266.842 310.838 268.444 315.127C268.024 310.438 267.837 305.045 267.837 299.042V286.944H274V324.834H267.044L258.92 308.89C256.77 304.702 254.853 300.397 253.178 295.994C253.178 300.684 253.505 305.983 253.505 312.501V324.787L247.436 324.834Z"
+                fill="#2A3647" />
+        </svg>
+    </div>
+    <div id="login-content">
+        <div class="signup-btn">
+            <p>Not a Join User?</p>
+            <button onclick="location.href='../html/register.html';">Sign Up</button>
+        </div>
+
+        <div class="login-mainboard">
+
+            <h1>Log in</h1>
+            <div class="blue-border"></div>
+
+            <div class="login-input">
+                <input placeholder="E-Mail" type="email" id="login_email" required>
+                <svg class="email-svg" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_192988_5080" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="25">
+                        <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_192988_5080)">
+                        <path
+                            d="M4 20.5C3.45 20.5 2.97917 20.3042 2.5875 19.9125C2.19583 19.5208 2 19.05 2 18.5V6.5C2 5.95 2.19583 5.47917 2.5875 5.0875C2.97917 4.69583 3.45 4.5 4 4.5H20C20.55 4.5 21.0208 4.69583 21.4125 5.0875C21.8042 5.47917 22 5.95 22 6.5V18.5C22 19.05 21.8042 19.5208 21.4125 19.9125C21.0208 20.3042 20.55 20.5 20 20.5H4ZM20 8.5L12.525 13.175C12.4417 13.225 12.3542 13.2625 12.2625 13.2875C12.1708 13.3125 12.0833 13.325 12 13.325C11.9167 13.325 11.8292 13.3125 11.7375 13.2875C11.6458 13.2625 11.5583 13.225 11.475 13.175L4 8.5V18.5H20V8.5ZM12 11.5L20 6.5H4L12 11.5ZM4 8.75V7.275V7.3V7.2875V8.75Z"
+                            fill="#A8A8A8" />
+                    </g>
+                </svg>
+                <div id="userNotFoundMail" class="user-not-found-mail d-none">
+                    <p>
+                        User not found!
+                    </p>
+                </div>
+
+
+                <input placeholder="Password" type="password" id="login_password" required>
+                <svg class="password-svg" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <mask id="mask0_192988_5087" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                        width="24" height="25">
+                        <rect y="0.5" width="24" height="24" fill="#D9D9D9" />
+                    </mask>
+                    <g mask="url(#mask0_192988_5087)">
+                        <path
+                            d="M6 22.5C5.45 22.5 4.97917 22.3042 4.5875 21.9125C4.19583 21.5208 4 21.05 4 20.5V10.5C4 9.95 4.19583 9.47917 4.5875 9.0875C4.97917 8.69583 5.45 8.5 6 8.5H7V6.5C7 5.11667 7.4875 3.9375 8.4625 2.9625C9.4375 1.9875 10.6167 1.5 12 1.5C13.3833 1.5 14.5625 1.9875 15.5375 2.9625C16.5125 3.9375 17 5.11667 17 6.5V8.5H18C18.55 8.5 19.0208 8.69583 19.4125 9.0875C19.8042 9.47917 20 9.95 20 10.5V20.5C20 21.05 19.8042 21.5208 19.4125 21.9125C19.0208 22.3042 18.55 22.5 18 22.5H6ZM6 20.5H18V10.5H6V20.5ZM12 17.5C12.55 17.5 13.0208 17.3042 13.4125 16.9125C13.8042 16.5208 14 16.05 14 15.5C14 14.95 13.8042 14.4792 13.4125 14.0875C13.0208 13.6958 12.55 13.5 12 13.5C11.45 13.5 10.9792 13.6958 10.5875 14.0875C10.1958 14.4792 10 14.95 10 15.5C10 16.05 10.1958 16.5208 10.5875 16.9125C10.9792 17.3042 11.45 17.5 12 17.5ZM9 8.5H15V6.5C15 5.66667 14.7083 4.95833 14.125 4.375C13.5417 3.79167 12.8333 3.5 12 3.5C11.1667 3.5 10.4583 3.79167 9.875 4.375C9.29167 4.95833 9 5.66667 9 6.5V8.5Z"
+                            fill="#A8A8A8" />
+                    </g>
+                </svg>
+                <div id="userNotFoundPassword" class="user-not-found-password d-none">
+                    <p>
+                        User not found!
+                    </p>
+                </div>
+
+
+            </div>
+            <p class="rememberme" id="remenberMe">
+                <svg onclick="remenberMe()" width="24" height="25" viewBox="0 0 24 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="4.96582" width="16" height="16" rx="3" stroke="#2A3647" stroke-width="2" />
+                </svg>
+                Remenber me
+            </p>
+            <div class="continue-btn">
+                <button onclick="login()" id="login_btn" class="login-btn">Log in</button>
+                <button id="guestLogin_btn" class="guestLogin-btn" onclick="addGuestName()">Guest Log in</button>
+            </div>
+        </div>
+
+        <div class="police-legal">
+            <button onclick="window.open('../html/privacy_policy_g.html', '_blank');">Privacy Policy</button>
+            <button onclick="window.open('../html/legal_notice_g.html', '_blank');">Legal Notice</button>
+        </div>
+    </div>
+
+    <div id="user-short" class="d-none"></div>
+
+
+</body>
+
+
+</html>
